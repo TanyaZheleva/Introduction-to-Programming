@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include <math.h>
 
 void allPossibleSubsets(int* _arr, int _size)
 {
