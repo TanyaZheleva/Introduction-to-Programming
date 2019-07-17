@@ -8,11 +8,11 @@ float median(int* _arr, int _size)
 	{
 		for (int j = 0; j < _size-i-1; j++)
 		{
-			if (_arr[i] > _arr[i + 1])
+			if (_arr[j] > _arr[j + 1])
 			{
-				temp = _arr[i];
-				_arr[i] = _arr[i + 1];
-				_arr[i + 1] = temp;
+				temp = _arr[j];
+				_arr[j] = _arr[j + 1];
+				_arr[j + 1] = temp;
 			}
 		}
 	}

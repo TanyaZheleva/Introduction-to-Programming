@@ -8,11 +8,11 @@ int mode(int* _arr, int _size)
 	{
 		for (int j = 0; j < _size-i-1; j++)
 		{
-			if (_arr[i] > _arr[i + 1])
+			if (_arr[j] > _arr[j + 1])
 			{
-				temp = _arr[i];
-				_arr[i] = _arr[i + 1];
-				_arr[i + 1] = temp;
+				temp = _arr[j];
+				_arr[j] = _arr[j + 1];
+				_arr[j + 1] = temp;
 			}
 		}
 	}
@@ -21,14 +21,13 @@ int mode(int* _arr, int _size)
 	int maxRepIndex = 0;
 	int maxRep = 0;
 	int curRep = 0;
-	for (int i = 0; i < _size-1; i++)
-	{
-		for (int j = 0; j < _size-i-1; j++)
+	
+		for (int j = 0; j < _size-1; j++)
 		{
-			if (_arr[i] = _arr[i + 1])
+			if (_arr[j] = _arr[j + 1])
 			{
 				curRep++;
-				curIndex = i;
+				curIndex = j;
 			}
 			else
 			{
@@ -41,7 +40,7 @@ int mode(int* _arr, int _size)
 				curRep = 0;
 			}
 		}
-	}
+	
 	return _arr[maxRepIndex];
 }
 
