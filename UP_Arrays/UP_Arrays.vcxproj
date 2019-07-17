@@ -127,6 +127,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="1.h" />
+    <ClInclude Include="10.h" />
+    <ClInclude Include="11.h" />
+    <ClInclude Include="12.h" />
     <ClInclude Include="2.h" />
     <ClInclude Include="3.h" />
     <ClInclude Include="4.h" />

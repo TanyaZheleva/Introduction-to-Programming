@@ -6,7 +6,7 @@ void sort(int* _arr, int _size)
 	int temp = _arr[0];
 	for (int j = 0; j < _size - 1; j++)
 	{
-		for (int i = 0; i < _size - i - 1; i++)
+		for (int i = 0; i < _size - j - 1; i++)
 		{
 			if (_arr[i] >  _arr[i + 1])
 			{
