@@ -3,36 +3,33 @@
 
 int main()
 {
-	int rows;
-	std::cin >> rows;
+	int rows, cols;
+	std::cin >> rows >> cols;
 	int** matrix = new int* [rows];
 	for (int i = 0; i < rows; i++)
 	{
-		matrix[i] = new int[rows];
+		matrix[i] = new int[cols];
 	}
 
 	for (int i = 0; i < rows; i++)
 	{
-		for (int j = 0; j < rows; j++)
+		for (int j = 0; j < cols; j++)
 		{
 			std::cin >> matrix[i][j];
 		}
 	}
 
-	int sum = 0;
-
+	float avg = 0.0f;
 	for (int i = 0; i < rows; i++)
 	{
-		for (int j = 0; j < rows; j++)
+		for (int j = 0; j < cols; j++)
 		{
-			if (i == j)
-			{
-				sum += matrix[i][j];
-			}
+			avg += matrix[i][j];
 		}
+		std::cout << avg / cols<<" ";
+		avg = 0.0f;
 	}
 
-	std::cout << sum;
 	for (int i = 0; i < rows; i++)
 	{
 		delete[] matrix[i];
