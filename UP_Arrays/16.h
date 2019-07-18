@@ -50,8 +50,7 @@ void check(int* _set, int _sizeSet, int* _sub, int _sizeSub)
 	{
 		std::cout << " not a subset";
 	}
-	/*delete[]_set;
-	delete[]_sub;*/
+	
 	for (int i = 0; i < countSubsets; i++)
 	{
 		delete[]subsets[i];
