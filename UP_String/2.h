@@ -49,5 +49,8 @@ int main()
 	std::cout << cat(temp, str2) << '\n';
 	swap(str1, str2);
 	std::cout << str1 << " " << str2 << "\n";
+	delete[] str1;
+	delete[] str2;
+
 	return 0;
 }

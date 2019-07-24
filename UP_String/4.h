@@ -20,5 +20,7 @@ int main()
 	str[0] = '\0';
 	std::cin >> str;
 	std::cout << palindrome(str);
+	delete[] str;
+
 	return 0;
 }

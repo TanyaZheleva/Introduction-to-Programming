@@ -85,6 +85,8 @@ int main()
 	std::cout << arr << '\n';
 	strCpy(arr, str);
 	std::cout << arr << '\n';
+	delete[] arr;
+	delete[] str;
 
 	return 0;
 }
