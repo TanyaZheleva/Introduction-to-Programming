@@ -13,7 +13,7 @@ int main()
 		matrix[i] = new int[size];
 	}
 	//a
-    /*int n = 1;
+	/*int n = 1;
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = 0; j < size; j++)
@@ -91,13 +91,56 @@ int main()
 	}*/
 
 	//d
+	int num = 1;
+	int i;
+	int row = 0;
+	int col = 0;
+	int lastRow = size - 1;
+	int lastCol = size - 1;
+
+	while (row<=lastRow && col<=lastCol)
+	{
+		for (i = col; i <= lastCol; i++)
+		{
+			matrix[row][i] = num;
+			num++;
+		}
+		row++;
+
+		for (i = row; i <= lastRow; i++)
+		{
+			matrix[i][lastCol] = num;
+			num++;
+		}
+		lastCol--;
+
+		if (row <= lastRow)
+		{
+			for (i = lastCol; i >= col; i--)
+			{
+				matrix[lastRow][i] = num;
+				num++;
+			}
+			lastRow--;
+		}
+
+		if (col <= lastCol)
+		{
+			for (i = lastRow; i >= row; i--)
+			{
+				matrix[i][col] = num;
+				num++;
+			}
+			col++;
+		}
+	}
 
 
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = 0; j < size; j++)
 		{
-			std::cout << matrix[i][j] << std::setw(3);
+			std::cout << matrix[i][j] << std::setw(4);
 		}
 		std::cout << '\n';
 	}
