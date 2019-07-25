@@ -235,10 +235,5 @@ int main()
 		}
 	}
 
-	//for (int i = 0; i < size; i++)
-	//{
-	//	delete[] matrix[i];
-	//}
-	//delete[] matrix;
 	return 0;
 }
