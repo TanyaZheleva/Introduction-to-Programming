@@ -1,5 +1,4 @@
 
-
 #include<iostream>
 
 int main()
@@ -43,7 +42,7 @@ int main()
 				step--;
 			}
 		}
-		
+
 		if (year > 0)
 		{
 			if (month > 0 && month < 12)
@@ -74,17 +73,30 @@ int main()
 	}
 
 	int daysPassed = 0;
-	daysPassed = (year - 1) * 365 + day - 1 + (month - 1) * 30;
-	for (int i = 0; i < year; i++)
+	daysPassed = (year - 1) * 365 + day - 1;
+
+	if (month == 2)
 	{
-		if ((i % 100) / 4 == 0)
+		daysPassed += 30;
+	}
+
+	if (month > 2)
+	{
+		daysPassed = daysPassed + 28 + (month - 2) * 30;
+		if ((year % 100) / 4 == 0)
 		{
 			daysPassed++;
 		}
 	}
-	for (int i = 0; i < month; i++)
+
+	for (int i = 4; i < year; i += 4)
 	{
-		if (((month < 8 && month % 2 != 0) || (month > 7 && month % 2 == 0)))
+		daysPassed++;
+	}
+
+	for (int i = 1; i < month; i++)
+	{
+		if (((i < 8 && i % 2 != 0) || (i > 7 && i % 2 == 0)))
 		{
 			daysPassed++;
 		}
