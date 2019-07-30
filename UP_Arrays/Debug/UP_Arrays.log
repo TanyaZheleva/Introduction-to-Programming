@@ -1,3 +1,0 @@
-﻿  Source.cpp
-C:\Users\PC\UP_PR\UP_Arrays\16.h(6,19): warning C4244:  'initializing': conversion from 'double' to 'int', possible loss of data
-  UP_Arrays.vcxproj -> C:\Users\PC\UP_PR\UP_Arrays\Debug\UP_Arrays.exe
