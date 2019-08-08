@@ -37,7 +37,7 @@ private:
 	pair Y;
 };
 
-bool overlap(pair a, pair b)
+bool overlappingPairs(pair a, pair b)
 {
 	if ((a.getX() > b.getX() && a.getX() > b.getY())
 		|| (a.getY() < b.getX() && a.getY() < b.getY()))
@@ -49,9 +49,9 @@ bool overlap(pair a, pair b)
 
 bool overlappingRectangles(rectangle a, rectangle b)
 {
-	if (overlap(a.getX(), b.getX()))
+	if (overlappingPairs(a.getX(), b.getX()))
 	{
-		if (overlap(a.getY(), b.getY()))
+		if (overlappingPairs(a.getY(), b.getY()))
 		{
 			return true;
 		}
