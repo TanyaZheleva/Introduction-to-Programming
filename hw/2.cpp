@@ -1,3 +1,4 @@
+#pragma once
 /**
 *
 * Solution to homework task 09
@@ -86,28 +87,31 @@ int main()
 	}
 
 	int daysPassed = 0;
-	daysPassed = (year - 1) * 365 + day - 1;
+	daysPassed = (year - 1) * 365 + day/* - 1*/;//years if all were not leap and days from start of month
 
-	if (month == 2)
+	if (month == 2)//days from january
 	{
 		daysPassed += 30;
 	}
 
-	if (month > 2)
+	if (month > 2)//days from february to current month
 	{
 		daysPassed = daysPassed + 28 + (month - 2) * 30;
-		if ((year % 100) / 4 == 0)
+		if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
 		{
 			daysPassed++;
 		}
 	}
 
-	for (int i = 4; i < year; i += 4)
+	for (int i = 1; i < year; i++)//leap years
 	{
-		daysPassed++;
+		if ((i % 4 == 0 && i % 100 != 0) || i % 400 == 0)
+		{
+			daysPassed++;
+		}
 	}
 
-	for (int i = 1; i < month; i++)
+	for (int i = 1; i < month; i++)//31sts
 	{
 		if (((i < 8 && i % 2 != 0) || (i > 7 && i % 2 == 0)))
 		{
