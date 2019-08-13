@@ -1,26 +1,49 @@
-#pragma once
-/**
-*
-* Solution to homework task 09
-* Introduction to programming course
-* Faculty of Mathematics and Informatics of Sofia University
-* 2018/2019 academic year
-*
-* @author Tanya Zheleva
-* @idnumber 62288
-* @task 2
-* @compiler  VC
-*
-*/
 
 #include<iostream>
+
+bool leapYear(int year)
+{
+	if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool checkDate(int year, int month, int day)
+{
+	if (year > 0)
+	{
+		if (month > 0 && month < 12 && day>0)
+		{
+			if (leapYear(year) == true && month == 2 && day <= 29)
+			{
+				return true;
+			}
+			if (leapYear(year) == false && month == 2 && day <= 28)
+			{
+				return true;
+			}
+			if (((month < 8 && month % 2 != 0) || (month > 7 && month % 2 == 0)) && month != 2 && day <= 31)
+			{
+				return true;
+			}
+			if (((month < 8 && month % 2 == 0) || (month > 7 && month % 2 != 0)) && month != 2 && day <= 30)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	return false;
+}
 
 int main()
 {
 	char date[11];
-	int day;
-	int month;
-	int year;
+	int day = 0;
+	int month = 0;
+	int year = 0;
 	int temp = 0;
 	int step = 3;
 	bool correctDate = false;
@@ -31,55 +54,21 @@ int main()
 			std::cin >> date[i];
 		}
 		date[10] = '\0';
-
 		day = 0;
 		month = 0;
 		year = 0;
 		temp = 0;
 		step = 3;
-		for (int i = 0; i < 10; i++)
+		day = (date[0] - 48) * 10 + date[1] - 48;
+		month = (date[3] - 48) * 10 + date[4] - 48;
+		for (int i = 6; i < 10; i++)
 		{
-			if (i < 2)
-			{
-				temp = date[i] - 48;
-				day += temp * pow(10, 1 - i);
-			}
-			if (i > 2 && i < 5)
-			{
-				temp = date[i] - 48;
-				month += temp * pow(10, i - pow(2, i - 2));
-			}
-			if (i > 5)
-			{
-				temp = date[i] - 48;
-				year += temp * pow(10, step);
-				step--;
-			}
+			temp = date[i] - 48;
+			year += temp * pow(10, step);
+			step--;
 		}
 
-		if (year > 0)
-		{
-			if (month > 0 && month < 12)
-			{
-				if ((year % 100) / 4 == 0 && month == 2 && day <= 29)
-				{
-					correctDate = true;
-				}
-				if ((year % 100) / 4 != 0 && month == 2 && day <= 28)
-				{
-					correctDate = true;
-				}
-				if (((month < 8 && month % 2 != 0) || (month > 7 && month % 2 == 0)) && month != 2 && day <= 31)
-				{
-					correctDate = true;
-				}
-
-				if (((month < 8 && month % 2 == 0) || (month > 7 && month % 2 != 0)) && month != 2 && day <= 30)
-				{
-					correctDate = true;
-				}
-			}
-		}
+		correctDate = checkDate(year, month, day);
 		if (correctDate == false)
 		{
 			std::cout << "Wrong date! Please enter again!\n";
@@ -87,33 +76,22 @@ int main()
 	}
 
 	int daysPassed = 0;
-	daysPassed = (year - 1) * 365 + day/* - 1*/;//years if all were not leap and days from start of month
+	daysPassed = (year - 1) * 365 + day - 1;
 
-	if (month == 2)//days from january
+	int months[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	for (int i = 1; i < month; i++)
 	{
-		daysPassed += 30;
+		daysPassed += months[i - 1];
 	}
 
-	if (month > 2)//days from february to current month
+	if (leapYear(year) == true && month > 2)
 	{
-		daysPassed = daysPassed + 28 + (month - 2) * 30;
-		if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
-		{
-			daysPassed++;
-		}
+		daysPassed++;
 	}
 
-	for (int i = 1; i < year; i++)//leap years
+	for (int i = 1; i < year; i++)
 	{
-		if ((i % 4 == 0 && i % 100 != 0) || i % 400 == 0)
-		{
-			daysPassed++;
-		}
-	}
-
-	for (int i = 1; i < month; i++)//31sts
-	{
-		if (((i < 8 && i % 2 != 0) || (i > 7 && i % 2 == 0)))
+		if (leapYear(i) == true)
 		{
 			daysPassed++;
 		}
