@@ -3,7 +3,6 @@
 
 void Revert(char str[])
 {
-	int dif = 32;
 	int i = 0;
 	while (str[i] != '\0')
 	{
