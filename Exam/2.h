@@ -4,11 +4,10 @@
 void merge(int* one, int* two, int size)
 {
 	int* three = new int[size * 2];
-	int i = 0;
-	int j = 0;
-	int p = 0;
-	bool lastJ = false;
-	bool lastP = false;
+	int i = 0;//three
+	int j = 0;//one
+	int p = 0;//two
+
 	while (i < size * 2)
 	{
 		while (one[j] <= two[p] && j < size)
